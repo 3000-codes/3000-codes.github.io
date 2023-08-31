@@ -1,4 +1,4 @@
-import Hello from "../markdowns/com.mdx";
+import Hello from "../markdowns/deploy.mdx";
 const Test = () => {
   return (
     <div>

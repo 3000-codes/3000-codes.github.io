@@ -1,0 +1,37 @@
+# how to deploy your nextjs blog to the github pages
+
+This is a tutorial on how to deploy your blog to the github pages.And it's important to note that you are deploying a static website.
+
+You can deploy by two ways that you can find on GitHub,go to your repo > **Settings** > **Pages** > **Build and deployment** > **Source**
+
+## Deploy from a branch
+
+1. Add the following configuration to your `next.config.js` :
+
+```js
+const nextConfig = {
+  // other configs..
+  output: "export",
+  basePath: "/", // if this repo is your main github site (such as yourUserName.github.io),you should set it as '/'.else it's you repo'name
+};
+```
+
+2. Add the `deploy`script to your `package.json`,then run it once to create the subbranch named `gh-pages`
+
+```json
+{
+  "deploy": "next build && touch out/.nojekyll && git add out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin gh-pages"
+}
+```
+
+ps: Here are some common problems I've encountered:
+
+- The 'touch' command doesn't work.
+  - You can use the 'echo' command instead.
+  - use git bash
+- Cannot add 'out' to staging area
+  - use the 'git add out/ -f' command instead.
+
+3. **Settings** > **Pages** > **Build and deployment** > **Source** > **Deploy from a branch**
+4. **Settings** > **Pages** > **Branch** ,and choose `gh-pages` as the branch with the `/root` folder. Hit **Save**.
+5. Run `deploy` script again,and You should see it on `https://yourUserName.github.io/repo-name/` in a few moments.
