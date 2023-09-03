@@ -1,0 +1,224 @@
+@keyframes move {
+
+    0%,
+    65% {
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg);
+    }
+
+    10% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    15% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    20% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    25% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    30% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    35% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    40% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    45% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    50% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    55% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    60% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    65% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    70% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    75% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    80% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    85% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    90% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    95% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg);
+    }
+}
+
+@-webkit-keyframes move {
+
+    0%,
+    65% {
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg);
+    }
+
+    10% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    15% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    20% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    25% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    30% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    35% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    40% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    45% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    50% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    55% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    60% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    65% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    70% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    75% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    80% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    85% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    90% {
+        -webkit-transform: rotate(21deg);
+        transform: rotate(21deg);
+    }
+
+    95% {
+        -webkit-transform: rotate(9deg);
+        transform: rotate(9deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg);
+    }
+}
+
+.bell {
+    position: fixed;
+    top: 100px;
+    right: 40px;
+    width: 100px;
+    height: 300px;
+    border: 1px solid #000;
+    animation-name: move;
+    animation-duration: 15s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-origin: top;
+    -webkit-transform-origin: top;
+    transform: rotate(15deg);
+}
