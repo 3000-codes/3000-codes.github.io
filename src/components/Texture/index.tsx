@@ -1,8 +1,7 @@
 'use client'
 import { type FC, useRef, useEffect } from 'react'
-// import { useSize } from "ahooks";
 import { initCanvas, polar2cart, type Fn, type Controls } from './tools'
-
+import WaterMark from '../WaterMark'
 const mask = 'radial-gradient(circle, transparent, black)'
 const { random } = Math
 let isActive = false
@@ -12,10 +11,6 @@ const setIsActive = (active: boolean): void => {
 
 const Texture: FC = () => {
   const el = useRef<HTMLCanvasElement>(null)
-
-  // { width: 964, height: 520 }
-  // useSize(document.body)!;
-
   useEffect(() => {
     const size = {
       width: window.innerWidth,
@@ -85,8 +80,6 @@ const Texture: FC = () => {
 
       // Execute all the steps from the previous frame
       prevSteps.forEach((i) => {
-        console.log(i)
-
         // 50% chance to keep the step for the next frame, to create a more organic look
         if (random() < 0.5) steps.push(i)
         else i()
@@ -104,8 +97,6 @@ const Texture: FC = () => {
       }
     }
     const pause = (): void => {
-      console.log('pause')
-
       setIsActive(false)
       if (rafId !== null) {
         window.cancelAnimationFrame(rafId)
@@ -141,12 +132,16 @@ const Texture: FC = () => {
   }, [])
 
   return (
-    <div
+    <>
+        <div
       className="fixed top-0 bottom-0 left-0 right-0 pointer-events-none print:hidden z-[-1] overflow-hidden"
       style={{ WebkitMaskImage: mask }}
     >
       <canvas ref={el} width="400" height="400" />
     </div>
+    <WaterMark text='一晌贪欢'/>
+    </>
+
   )
 }
 

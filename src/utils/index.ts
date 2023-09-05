@@ -10,6 +10,16 @@ const sizeTransform = (size?: number | string): string => {
   return `${size.toFixed(2)} ${units[i]}`
 }
 
+const camel2Kebab = (str: string): string => str.replace(/([A-Z])/g, '-$1').toLowerCase()
+
+function add (a: number, b: number): number
+function add (a: string, b: string): string
+function add (a: string, b: number): string
+function add (a: number, b: string): string
+function add (a: any, b: any): any {
+  return a + b
+}
+
 export {
-  sizeTransform
+  sizeTransform, add, camel2Kebab
 }
