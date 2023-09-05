@@ -1,4 +1,5 @@
-import { useRef, type FC, type CSSProperties, useEffect } from 'react'
+'use client'
+import { useRef, type FC, type CSSProperties, useEffect, useState } from 'react'
 import { camel2Kebab } from '@/utils'
 
 const createText = (text: string): string => {
@@ -32,10 +33,9 @@ const getStyle = (url: string): CSSProperties =>
   // TODO:允许自定义水印样式
 const WaterMark: FC<{ text: string }> = ({ text }) => {
   const ref = useRef<HTMLDivElement>(null)
-  const url = createText(text)
-  const style = getStyle(url)
+  const [style, setStyle] = useState<CSSProperties>()
 
-  const setStyleProperties = (element: HTMLElement): void => {
+  const setStyleProperties = (element: HTMLElement, style: CSSProperties): void => {
     for (const key in style) {
       if (Object.hasOwn(style, key)) {
         const value = style[key as keyof CSSProperties]
@@ -45,6 +45,8 @@ const WaterMark: FC<{ text: string }> = ({ text }) => {
   }
 
   useEffect(() => {
+    const url = createText(text)
+    setStyle(getStyle(url))
     const mutationCallback = (): void => {
       const targetNode = document.querySelector('#water-mark')
       if (targetNode == null) {
@@ -53,11 +55,14 @@ const WaterMark: FC<{ text: string }> = ({ text }) => {
       }
       // FIXME:这里的判断有问题:stringify之后的肯定是不一样的(小驼峰与中划线比较)
       if (targetNode.getAttribute('style') !== JSON.stringify(style)) {
-        setStyleProperties(targetNode as HTMLElement)
+        setStyleProperties(targetNode as HTMLElement, style as CSSProperties)
       }
     }
     const observer = new MutationObserver(mutationCallback)
     observer.observe(document.body, config)
+    return () => {
+      observer.disconnect()
+    }
   }, [])
 
   return <div ref={ref} id='water-mark' style={style}></div>
