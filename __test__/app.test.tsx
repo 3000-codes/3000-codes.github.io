@@ -1,13 +1,12 @@
-import { describe, expect, it } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from 'vitest'
+import { render, screen } from '@testing-library/react'
+import { type FC } from 'react'
 
-function App() {
-  return <div>app</div>;
-}
+const App: FC = () => <div>app</div>
 
-describe("App", () => {
-  it("it should be render", () => {
-    render(<App />);
-    expect(screen.getByText("app")).toBeInTheDocument();
-  });
-});
+describe('App', () => {
+  it('it should be render', () => {
+    render(<App />)
+    expect(screen.getByText('app')).toBeInTheDocument()
+  })
+})

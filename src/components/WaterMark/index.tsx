@@ -30,23 +30,25 @@ const getStyle = (url: string): CSSProperties =>
     zIndex: -1,
     backgroundImage: `url(${url})`
   })
-  // TODO:允许自定义水印样式
+
+const setStyleProperties = (element: HTMLElement, style: CSSProperties): void => {
+  for (const key in style) {
+    if (Object.hasOwn(style, key)) {
+      const value = style[key as keyof CSSProperties]
+      element.style.setProperty(camel2Kebab(key), String(value))
+    }
+  }
+}
+
+// TODO:允许自定义水印样式
 const WaterMark: FC<{ text: string }> = ({ text }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [style, setStyle] = useState<CSSProperties>()
 
-  const setStyleProperties = (element: HTMLElement, style: CSSProperties): void => {
-    for (const key in style) {
-      if (Object.hasOwn(style, key)) {
-        const value = style[key as keyof CSSProperties]
-        element.style.setProperty(camel2Kebab(key), String(value))
-      }
-    }
-  }
-
   useEffect(() => {
     const url = createText(text)
-    setStyle(getStyle(url))
+    const _style = getStyle(url)
+    setStyle(_style)
     const mutationCallback = (): void => {
       const targetNode = document.querySelector('#water-mark')
       if (targetNode == null) {
@@ -54,8 +56,8 @@ const WaterMark: FC<{ text: string }> = ({ text }) => {
         return
       }
       // FIXME:这里的判断有问题:stringify之后的肯定是不一样的(小驼峰与中划线比较)
-      if (targetNode.getAttribute('style') !== JSON.stringify(style)) {
-        setStyleProperties(targetNode as HTMLElement, style as CSSProperties)
+      if (targetNode.getAttribute('style') !== JSON.stringify(_style)) {
+        setStyleProperties(targetNode as HTMLElement, _style)
       }
     }
     const observer = new MutationObserver(mutationCallback)
@@ -63,7 +65,7 @@ const WaterMark: FC<{ text: string }> = ({ text }) => {
     return () => {
       observer.disconnect()
     }
-  }, [])
+  }, [text])
 
   return <div ref={ref} id='water-mark' style={style}></div>
 }
