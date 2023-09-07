@@ -1,3 +1,8 @@
+---
+title: 如何判断对象是否已经被 Proxy(代理)了
+description: This is a tutorial on how to deploy your blog to the github pages
+---
+
 # 如何判断对象是否已经被 Proxy(代理)了
 
 简单的说一下 Proxy 的定义:**用于创建一个对象的代理，从而实现基本操作的拦截和自定义（如属性查找、赋值、枚举、函数调用等）**。
